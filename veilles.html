@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -10,13 +10,57 @@
       integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
       crossorigin="anonymous"
     />
-   </head>
-   <body>
-   <header>
-   </header>
-   <main>
-    </main>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-<script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div>
+      <header id="header" class="header text-center my-5 mx-auto">
+        <h1 id="h1" class="h1">Veilles EthersJS</h1>
+        <p id="entete" class="entete m-5 bg-primary text-light rounded p-4">
+          Bonjour ! Nous sommes le <span id="date-du-jour"> </span>☺️
+        </p>
+      </header>
+      <main class="container">
+        <div class="row">
+          <div class="input-group my-3 col-6">
+            <div class="input-group-text">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                aria-label="Checkbox pour les veilles à venir"
+              />
+            </div>
+            <span class="input-group-text bg-light"
+              >Afficher uniquement des veilles à venir</span
+            >
+          </div>
+          <div class="input-group my-3 col-6">
+            <label class="input-group-text" for="inputSort">Trier</label>
+            <select class="form-select" id="inputSort">
+              <option value="trie-date" checked>par date</option>
+              <option value="trie-atoz">de A à Z</option>
+              <option value="trie-za">de Z à A</option>
+            </select>
+          </div>
+          <div class="input-group my-3 col-6">
+            <label class="input-group-text" for="inputClassify"
+              >Catégories</label
+            >
+            <select class="form-select" id="inputClassify"> </select>
+          </div>
+          <div id="grid-container"></div>
+        </div>
+      </main>
+    </div>
+    <script
+      href="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script src="js/veilles.js"></script>
+    <script src="js/script.js"></script>
   </body>
-  </html>
+</html>
