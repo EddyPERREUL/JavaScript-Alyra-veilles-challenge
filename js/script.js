@@ -7,6 +7,7 @@ const datePos = document.getElementById("date-du-jour");
 datePos.prepend(dateNow.format("DD/MM/YYYY"));
 // console.log("dddd DD/MM/YY", dateNow.format("dddd DD/MM/YY"));
 let filterVeilles = "toutes les veilles";
+
 let compteur = 0;
 function insertVeilles() {
   const ulEl = document.createElement("ul");
@@ -16,7 +17,7 @@ function insertVeilles() {
     if (filterVeilles === "toutes les veilles") {
       return true;
     } else {
-      return el.tags.includes(filterVeilles);
+      return el.category.includes(filterVeilles);
     }
   });
 
@@ -41,3 +42,28 @@ function insertVeilles() {
 }
 
 insertVeilles();
+
+function activateFilterByCategory() {
+    // repérer select
+    // boucle pour parcourir uniqueCategory
+    const selectEL = document.getElementById("inputClassify");
+    // trier uniqueCategory dans l'ordre alphabétique
+    uniqueCategory.sort();
+    console.log(uniqueCategory);
+    console.log(selectEL);
+    for (let tag of uniqueCategory) {
+      const option = document.createElement("option");
+      option.textContent = tag;
+      option.value = tag;
+      console.log(option);
+      selectEL.append(option);
+    }
+    selectEL.addEventListener("change", () => {
+      console.dir(selectEL);
+      filterVeilles = selectEL.value;
+      insertVeilles();
+      console.log(filterVeilles);
+    });
+  }
+  
+  activateFilterByCategory();
