@@ -105,3 +105,44 @@ function allCategory(list) {
 }
 
 const uniqueCategory = allCategory(veilles);
+
+function allDates(list) {
+  /* retourner la liste des dates uniques */
+  let listDates = [];
+  for (let element of list) {
+    if ("date" in element) {
+      listDates = listDates.concat(element.date);
+    }
+  }
+  return listDates;
+}
+
+const allDate = allDates(veilles);
+
+// console.log(allDate);
+
+function sortByDate(list) {
+  const dateFormat = "DD/MM/YYYY";
+  /* devrait retourner l'array triée pas dates, moment.js est chargé dans ce pen !!  */
+  return list.sort((a, b) => moment(a, dateFormat) - moment(b, dateFormat));
+}
+
+function trieAlpha(list) {
+  let trieAlpha = [];
+  for (let trie of veilles) {
+    trieAlpha.push(trie.subject);
+  }
+  trieAlpha.sort();
+  return trieAlpha;
+}
+
+function trieLetinverse(list) {
+  const trieInverse = trieAlpha.sort((right, left) => {
+    if (right > left) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return trieInverse;
+}
