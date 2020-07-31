@@ -127,14 +127,30 @@ function sortByDate(list) {
   return list.sort((a, b) => moment(a, dateFormat) - moment(b, dateFormat));
 }
 
+function allSujets(list) {
+  /* retourner la liste des sujets */
+let listSujets = [];
+for (let element of list) {
+  if ("subject" in element) {
+    listSujets = listSujets.concat(element.subject);
+  }
+}
+  return listSujets;
+}
+
+const allSujet = allSujets(veilles);
+
 function trieAlpha(list) {
-  let trieAlpha = [];
-  for (let trie of veilles) {
+ /* let trieAlpha = [];
+  for (let trie of list) {
     trieAlpha.push(trie.subject);
   }
   trieAlpha.sort();
-  return trieAlpha;
+  return trieAlpha; */
+  return list.sort((a, b) => (a > b ? 1 : -1 ));
 }
+
+//const triesSujets = trieAlpha(allSujet);
 
 function trieLetinverse(list) {
   const trieInverse = trieAlpha.sort((right, left) => {
@@ -146,3 +162,9 @@ function trieLetinverse(list) {
   });
   return trieInverse;
 }
+
+
+/* function getSelectedValue() {
+  let selectedValue = document.getElementById("inputSort").value;
+  console.log(selectedValue);
+} */
