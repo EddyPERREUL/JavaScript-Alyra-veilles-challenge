@@ -16,13 +16,13 @@
     />
   </head>
   <body>
-    <div>
-      <header id="header" class="header text-center my-5 mx-auto">
-        <h1 id="h1" class="h1">Veilles EthersJS</h1>
-        <p id="entete" class="entete m-5 bg-primary text-light rounded p-4">
-          Bonjour ! Nous sommes le <span id="date-du-jour"> </span>☺️
-        </p>
+    <div class="container">
+      <header id="header" class="header text-center">
+        <h1 id="h1" class="p-5">Veilles EthersJS</h1>
+        <p id="entete" class="entete bg-primary text-light rounded p-4">
+          Bonjour ! Nous sommes le <span id="date-du-jour"> </span>&#128522</p>
       </header>
+    </div>
       <main class="container">
         <div class="row">
           <div class="input-group my-3 col-6">
@@ -50,7 +50,11 @@
             <label class="input-group-text" for="inputClassify"
               >Catégories</label
             >
-            <select class="form-select" id="inputClassify"> </select>
+            <select class="form-select" id="inputClassify">
+              <option value="toutes les veilles" selected
+                >toutes les categories</option
+              >
+            </select>
           </div>
           <div id="grid-container"></div>
         </div>
