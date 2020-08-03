@@ -25,14 +25,19 @@ function insertVeilles() {
 
   for (let veille of filterV) {
     console.log(veille);
+    //const dateFormat = "dddd DD/MM/YYYY";
+    const dateFormat = moment(veille.date, "DD/MM/YYYY")
+      .locale("fr")
+      .format("dddd DD/MM/YYYY");
     const li = document.createElement("li");
     li.classList.add("card", "shadow-sm", "p-3", "mb-3");
     li.innerHTML = `<div class="card-body">
       <h2 class="card-title mb-2">${veille.subject}</h2>
       <div class="badge bg-primary p-1 mb-2">${veille.category}</div>
-      <p class="card-text">${veille.date}</p>
+      <p class="card-text">${dateFormat}</p>
   </div>`;
-
+    // <p class="card-text"><time datetime="${veille.date}">${veille.date}</time></p>
+    //
     ulEl.append(li);
     compteur += 1;
     if (compteur % 2 == 0) {
@@ -109,3 +114,76 @@ function selectAz(val) {
     insertVeilles();
   }
 }
+
+function veillesavenir(list) {
+  const dateFormat = "DD/MM/YYYY";
+  let listVeillesavenir = [];
+  list.forEach((el) => {
+    if (moment(el.date, dateFormat) > moment(dateNow, dateFormat)) {
+      listVeillesavenir.push(el);
+    }
+  });
+  return listVeillesavenir;
+}
+//console.log(veillesavenir(veilles));
+function insertVeillesAvenir() {
+  const ulEl = document.createElement("ul");
+  const dateFormat = "DD/MM/YYYY";
+  // const dateFormat = moment(veilles.date, "DD/MM/YYYY").locale("fr").format("dddd DD/MM/YYYY");
+  // const dateFormat = moment(veille.date, "DD/MM/YYYY")
+  const gridContainer = document.getElementById("grid-container");
+  ulEl.classList.add("list-unstyled");
+  //const filterV = veilles.filter((el) => {
+  let listVeillesavenir = [];
+  veilles.forEach((el) => {
+    if (moment(el.date, dateFormat) > moment(dateNow, dateFormat)) {
+      listVeillesavenir.push(el);
+    }
+  });
+  const filterV = listVeillesavenir;
+
+  let compteur = 0;
+  for (let veille of filterV) {
+    console.log(veille);
+    const dateFormat1 = moment(veille.date, "DD/MM/YYYY")
+      .locale("fr")
+      .format("dddd DD/MM/YYYY");
+    //const dateFormat = "dddd DD/MM/YYYY";
+    // const dateFormat = moment(veille.date, "DD/MM/YYYY")
+    // .locale("fr")
+    // .format("dddd DD/MM/YYYY");
+    const li = document.createElement("li");
+    li.classList.add("card", "shadow-sm", "p-3", "mb-3");
+    li.innerHTML = `<div class="card-body">
+      <h2 class="card-title mb-2">${veille.subject}</h2>
+      <div class="badge bg-primary p-1 mb-2">${veille.category}</div>
+      <p class="card-text">${dateFormat1}</p>
+  </div>`;
+
+    ulEl.append(li);
+    compteur += 1;
+    if (compteur % 2 == 0) {
+      li.classList.add("bg-light");
+    }
+  }
+  gridContainer.innerHTML = "";
+  gridContainer.append(ulEl);
+}
+
+function activateFilterVeillesAvenir() {
+  // repérer select
+  // boucle pour parcourir uniqueCategory
+  const boxEL = document.getElementById("veilleschbox");
+  console.log(boxEL.value);
+  console.log(boxEL.checked);
+  boxEL.addEventListener("click", () => {
+    if (boxEL.checked) {
+      console.log(boxEL.checked);
+      insertVeillesAvenir();
+    } else {
+      insertVeilles();
+    }
+  });
+}
+
+activateFilterVeillesAvenir();

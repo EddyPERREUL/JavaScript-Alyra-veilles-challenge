@@ -168,3 +168,18 @@ function trieLetinverse(list) {
   let selectedValue = document.getElementById("inputSort").value;
   console.log(selectedValue);
 } */
+
+/* fonction qui retourne l'array des veilles à venir */
+
+/* function veillesavenir (list) {
+  const dateN = moment();
+  const dateFormat = "DD/MM/YYYY";
+  let listVeillesavenir = [];
+  list.forEach((el) => {
+  if (moment(el.date, dateFormat)> moment($dateN, dateFormat)) {
+    listVeillesavenir.push(el);
+  }
+});
+return listVeillesavenir;
+}
+console.log(veillesavenir(veilles)); */
